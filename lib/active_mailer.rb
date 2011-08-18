@@ -158,9 +158,9 @@ module ActiveMailer #:nodoc:
             
             attachments_to_set.each do |att|              
               attachment(
-                         :content_type => (att[:content_type]  || att.content_type), 
-                         :body         => File.read(att[:path] || att.path), 
-                         :filename    => (att[:file_name]     || att.file_name)
+                         :content_type => (att[:content_type]      || att.content_type),
+                         :body         => (att[:body] || att.body) || File.read(att[:path] || att.path),
+                         :filename     => (att[:file_name]         || att.file_name)
                          )
             end
           end
