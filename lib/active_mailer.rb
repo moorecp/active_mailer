@@ -149,7 +149,7 @@ module ActiveMailer #:nodoc:
 
         DefaultActionMailer.instance_eval do
           define_method(method_name) do |*args|
-            options = args[0]
+            options = args[0].symbolize_keys
             attachments_to_set = (options[:attachments] || [])
             options.keys.each do |k|
               self.instance_eval("@#{k.to_s} = options[k]") if options[k]
